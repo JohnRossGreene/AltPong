@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqm3yat8xort"]
+
+[ext_resource type="PackedScene" uid="uid://co3ie0c8t4mja" path="res://player.tscn" id="1_w87n7"]
+[ext_resource type="PackedScene" uid="uid://ddwga6wie2pxm" path="res://ball.tscn" id="2_b1wvv"]
+
+[sub_resource type="GDScript" id="GDScript_8a1ak"]
+resource_name = "res://game.gd"
+script/source = "extends Node2D
+
+
+
+
+func _on_top_body_entered(body):
+	body.direction.y *= -1
+	print('yays')
+
+
+func _on_bottom_body_entered(body):
+	body.direction.y *= -1
+
+
+
+func _on_left_body_entered(body):
+	body.queue_free()
+	var e = preload(\"res://ball.tscn\").instantiate()
+	e.global_position = Vector2(317,231)
+	add_child(e)
+
+	
+
+
+func _on_right_body_entered(body):
+	body.queue_free()
+	var e = preload(\"res://ball.tscn\").instantiate()
+	e.global_position = Vector2(317,231)
+	add_child(e)
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40xcs"]
+size = Vector2(636, 48)
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_8a1ak")
+
+[node name="top" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="topcol" type="CollisionShape2D" parent="top"]
+position = Vector2(319, -14)
+shape = SubResource("RectangleShape2D_40xcs")
+
+[node name="bottom" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="bottomcol" type="CollisionShape2D" parent="bottom"]
+position = Vector2(319, 467)
+shape = SubResource("RectangleShape2D_40xcs")
+
+[node name="left" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="leftcol" type="CollisionShape2D" parent="left"]
+position = Vector2(0, 213)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_40xcs")
+
+[node name="right" type="Area2D" parent="."]
+position = Vector2(629, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="rightcol" type="CollisionShape2D" parent="right"]
+position = Vector2(0, 213)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_40xcs")
+
+[node name="player" parent="." instance=ExtResource("1_w87n7")]
+position = Vector2(113, 445)
+
+[node name="player2" parent="." instance=ExtResource("1_w87n7")]
+position = Vector2(629, 445)
+
+[node name="ball" parent="." instance=ExtResource("2_b1wvv")]
+position = Vector2(317, 231)
+
+[connection signal="body_entered" from="top" to="." method="_on_top_body_entered"]
+[connection signal="body_entered" from="bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="right" to="." method="_on_right_body_entered"]
