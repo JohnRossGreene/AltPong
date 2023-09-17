@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://djakj42ei8p1p"]
+
+[ext_resource type="Script" path="res://aipaddle.gd" id="1_x8c7t"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xdakl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwal3"]
+size = Vector2(12, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1sdge"]
+size = Vector2(14, 92)
+
+[node name="aipaddle" type="CharacterBody2D"]
+script = ExtResource("1_x8c7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.5, 0.25)
+scale = Vector2(11, 92.5)
+texture = SubResource("PlaceholderTexture2D_xdakl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.500004, 0.25)
+shape = SubResource("RectangleShape2D_jwal3")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0.500004, 0.25)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1sdge")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
