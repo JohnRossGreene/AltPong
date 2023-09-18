@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 40
+const SPEED = 50
 @onready var ball = %"../ball"
 func _physics_process(delta):
 	if is_instance_valid(ball) == false:

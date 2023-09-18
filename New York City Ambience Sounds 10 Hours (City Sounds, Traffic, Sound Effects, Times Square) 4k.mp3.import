@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://coydjddqgvja0"
+path="res://.godot/imported/New York City Ambience Sounds 10 Hours (City Sounds, Traffic, Sound Effects, Times Square) 4k.mp3-dbf1022fa47f1d3401d9a6c393e8976d.mp3str"
+
+[deps]
+
+source_file="res://New York City Ambience Sounds 10 Hours (City Sounds, Traffic, Sound Effects, Times Square) 4k.mp3"
+dest_files=["res://.godot/imported/New York City Ambience Sounds 10 Hours (City Sounds, Traffic, Sound Effects, Times Square) 4k.mp3-dbf1022fa47f1d3401d9a6c393e8976d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
