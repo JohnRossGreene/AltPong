@@ -5,14 +5,13 @@ extends Sprite2D
 @onready var player = $"../player"
 @onready var arm = $Wook_Arm
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-#bottom (18, 493)
+#Bottom (18, 493)
 #Top(18, 6)
-#center (18, 252)
-	if Input.is_key_pressed(KEY_W):
-		arm.rotation_degrees -= .5
-	if Input.is_key_pressed(KEY_S):
-		arm.rotation_degrees += .5
-	pass
+#Center (18, 252)
+#Wow Godot it would have been sick if I knew this function existed
+	#thanks for burying it under a load of documentation and tutorials really helpful
+		#Definitely didn't spend too much time making trig formulas just to rotate an arm haha 
+	arm.look_at(player.position)
+

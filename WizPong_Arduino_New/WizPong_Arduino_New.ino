@@ -62,9 +62,7 @@ void setup() {
   Keyboard.begin();
 }
 void loop() {
-  Keyboard.press("S");
   delay(100);
-  Keyboard.releaseAll();
   Wire.beginTransmission(MPU_ADDR);
   Wire.write(0x3B); // starting with register 0x3B (ACCEL_XOUT_H) [MPU-6000 and MPU-6050 Register Map and Descriptions Revision 4.2, p.40]
   Wire.endTransmission(false); // the parameter indicates that the Arduino will send a restart. As a result, the connection is kept active.
@@ -103,7 +101,7 @@ void loop() {
 
   Serial.println(delta);
   
-  if (accelerometer_y > 0 && accelerometer_z < -3500){
+  if (accelerometer_y > -2000 && accelerometer_x > 13500){
     // digitalWrite(LED_LB, LOW);
     // digitalWrite(LED_RB, LOW);
     // digitalWrite(LED_LT, HIGH);
@@ -111,7 +109,7 @@ void loop() {
     dir = 0;
   }
 
-  else if (accelerometer_y < -10000 && accelerometer_z > 2500){
+  else if (accelerometer_y < -10000 && accelerometer_x > 5000){
     // digitalWrite(LED_LB, HIGH);
     // digitalWrite(LED_RB, HIGH);
     // digitalWrite(LED_LT, LOW);
@@ -125,7 +123,7 @@ void loop() {
     // digitalWrite(LED_RT, LOW);
     dir = 2;
   }
-  else if (accelerometer_y > -3000 && accelerometer_z > 7000){
+  else if (accelerometer_y > -5000 && accelerometer_z > 7000){
     // digitalWrite(LED_LB, LOW);
     // digitalWrite(LED_RB, HIGH);
     // digitalWrite(LED_LT, LOW);
@@ -149,9 +147,9 @@ void loop() {
       pressed_D = false;
     }
     Serial.println("DOWN");
-    Keyboard.press('S');
-    delay(300);
-    Keyboard.releaseAll();
+    Keyboard.print('S');
+    // delay(300);
+    // Keyboard.releaseAll();
     }
   if (dir == 1)
     {
@@ -166,9 +164,9 @@ void loop() {
       pressed_D = false;
     }
       Serial.println("UP");
-      Keyboard.press('W');
-      delay(300);
-      Keyboard.releaseAll();
+      Keyboard.print('W');
+      // delay(300);
+      // Keyboard.releaseAll();
 
     }
   if (dir == 2){
@@ -178,15 +176,15 @@ void loop() {
     // lcd.print(delta);
     if(pressed_A == false){
       Keyboard.releaseAll();
-      pressed_S = false;
+        pressed_S = false;
       pressed_W = false;
       pressed_A = true;
       pressed_D = false;
     }
       Serial.println("LEFT");
-      Keyboard.press('A');
-      delay(300);
-      Keyboard.releaseAll();
+      Keyboard.print('A');
+      // delay(300);
+      // Keyboard.releaseAll();
 
   }
   if (dir == 3){
@@ -202,13 +200,14 @@ void loop() {
       pressed_D = true;
     }
     Serial.println("RIGHT");
-      Keyboard.press('D');
-      delay(300);
-      Keyboard.releaseAll();
+      Keyboard.print('D');
+      // delay(300);
+      // Keyboard.releaseAll();
   }
   if (dir == 4){
     Serial.println("neutral");
     Keyboard.releaseAll();
+    Keyboard.print('Q');
     pressed_S = false;
     pressed_W = false;
     pressed_A = false;
@@ -222,7 +221,7 @@ void loop() {
     Keyboard.release(' ');
   }
 
-  // // delay
+  delay(150);
   // Serial.println(delta);
   // lcd.clear();
 }

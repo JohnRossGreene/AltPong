@@ -5,9 +5,9 @@ var screen_size
 var pad_size
 var direction = Vector2(1.0, 0.0)
 
-# Constant for ball speed (in pixels/second)
+#Ball shpeed
 const INITIAL_BALL_SPEED = 80
-# Speed of the ball (also in pixels/second)
+#Ball shpeed but again. it doesnt get faster i decided against it
 var ball_speed = INITIAL_BALL_SPEED
 # Constant for pads speed
 const PAD_SPEED = 150
