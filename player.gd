@@ -13,6 +13,8 @@ func _physics_process(delta):
 		$"../spell".hide()
 		$"../magic".play()
 		$Timer.start()
+		$MagicEffect.visible = true
+		$MagicEffect.play()
 	if(Input.is_action_pressed('left_move_down')):
 		input_direction = Vector2.DOWN
 	elif(Input.is_action_pressed("left_move_up")):
