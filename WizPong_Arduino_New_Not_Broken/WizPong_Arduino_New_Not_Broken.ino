@@ -216,9 +216,7 @@ void loop() {
   }
   if (delta > 20)
   {
-    Keyboard.press(' ');
-    delay(50);
-    Keyboard.release(' ');
+    Keyboard.print(' ');
   }
 
   delay(150);
