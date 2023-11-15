@@ -250,18 +250,18 @@ unique_name_in_owner = true
 position = Vector2(18, 252)
 collision_mask = 3
 
+[node name="CollisionShape2D" parent="player/Area2D" index="0"]
+position = Vector2(0.249998, 0)
+
+[node name="Timer" parent="player" index="3"]
+wait_time = 10.01
+
 [node name="MagicEffect" type="AnimatedSprite2D" parent="player"]
 visible = false
 z_index = 1
 position = Vector2(9, 9)
 scale = Vector2(0.6, 0.483871)
 sprite_frames = SubResource("SpriteFrames_6j7nt")
-
-[node name="CollisionShape2D" parent="player/Area2D" index="0"]
-position = Vector2(0.249998, 0)
-
-[node name="Timer" parent="player" index="4"]
-wait_time = 10.01
 
 [node name="ball" parent="." instance=ExtResource("2_b1wvv")]
 unique_name_in_owner = true
@@ -292,6 +292,7 @@ text = "0"
 metadata/_edit_use_anchors_ = true
 
 [node name="p2_score" type="Label" parent="."]
+visible = false
 offset_left = 581.0
 offset_top = 43.0
 offset_right = 638.0

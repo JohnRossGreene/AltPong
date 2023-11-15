@@ -116,7 +116,7 @@ void loop() {
     // digitalWrite(LED_RT, LOW);
     dir = 1;
   }
-  else if (accelerometer_y < -8500 && accelerometer_z < -6000){
+  else if (accelerometer_y < -8500 && accelerometer_z < -4000){
     // digitalWrite(LED_LB, HIGH);
     // digitalWrite(LED_RB, LOW);
     // digitalWrite(LED_LT, HIGH);
@@ -136,7 +136,7 @@ void loop() {
   if (dir == 0)
     {
     // lcd.setCursor(1, 0);
-    // lcd.print("DOWN");
+    // lcd.print("DOWN")
     // lcd.setCursor(1,3);
     // lcd.print(delta);
     if(pressed_S == false){
@@ -147,9 +147,9 @@ void loop() {
       pressed_D = false;
     }
     Serial.println("DOWN");
-    Keyboard.print('S');
-    // delay(300);
-    // Keyboard.releaseAll();
+    Keyboard.press('S');
+    delay(20);
+    Keyboard.releaseAll();
     }
   if (dir == 1)
     {
@@ -164,9 +164,9 @@ void loop() {
       pressed_D = false;
     }
       Serial.println("UP");
-      Keyboard.print('W');
-      // delay(300);
-      // Keyboard.releaseAll();
+      Keyboard.press('W');
+      delay(20);
+      Keyboard.releaseAll();
 
     }
   if (dir == 2){
@@ -182,9 +182,9 @@ void loop() {
       pressed_D = false;
     }
       Serial.println("LEFT");
-      Keyboard.print('A');
-      // delay(300);
-      // Keyboard.releaseAll();
+      Keyboard.press('A');
+      delay(20);
+      Keyboard.releaseAll();
 
   }
   if (dir == 3){
@@ -200,14 +200,16 @@ void loop() {
       pressed_D = true;
     }
     Serial.println("RIGHT");
-      Keyboard.print('D');
-      // delay(300);
-      // Keyboard.releaseAll();
+      Keyboard.press('D');
+      delay(20);
+      Keyboard.releaseAll();
   }
   if (dir == 4){
     Serial.println("neutral");
     Keyboard.releaseAll();
-    Keyboard.print('Q');
+    Keyboard.press('Q');
+    delay(20);
+    Keyboard.releaseAll();
     pressed_S = false;
     pressed_W = false;
     pressed_A = false;
@@ -216,10 +218,12 @@ void loop() {
   }
   if (delta > 20)
   {
-    Keyboard.print(' ');
+    Keyboard.press(' ');
+    delay(20);
+    Keyboard.releaseAll();
   }
 
-  delay(150);
+  delay(50);
   // Serial.println(delta);
   // lcd.clear();
 }
